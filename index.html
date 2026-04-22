@@ -7,6 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="CampoClaro">
+<link rel="manifest" href="/manifest.json">
 <meta name="description" content="Calculadora financiera para productores agrícolas mexicanos">
 <title>CampoClaro — Calculadora Agrícola</title>
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231B4332' rx='20'/><text y='.85em' font-size='72' x='14'>🌾</text></svg>">
@@ -397,30 +398,8 @@ window.addEventListener('appinstalled',()=>{
 });
 
 // Register service worker (works when hosted on HTTPS)
-if('serviceWorker' in navigator){
-  const sw=`
-    const CACHE='campoclaro-v2';
-    const ASSETS=['/'];
-    self.addEventListener('install',e=>{self.skipWaiting();});
-    self.addEventListener('activate',e=>e.waitUntil(clients.claim()));
-    self.addEventListener('fetch',e=>{
-      if(e.request.method!=='GET') return;
-      e.respondWith(
-        caches.open(CACHE).then(cache=>
-          cache.match(e.request).then(r=>{
-            const fetch_res=fetch(e.request).then(res=>{
-              cache.put(e.request,res.clone()); return res;
-            }).catch(()=>r);
-            return r||fetch_res;
-          })
-        )
-      );
-    });
-  `;
-  try{
-    const blob=new Blob([sw],{type:'application/javascript'});
-    navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
-  }catch(e){}
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(() => {});
 }
 
 // ── NUMBER FORMATTING ─────────────────────────────────────────────────────────

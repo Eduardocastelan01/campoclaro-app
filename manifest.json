@@ -1,0 +1,26 @@
+{
+  "name": "CampoClaro — Calculadora Agrícola",
+  "short_name": "CampoClaro",
+  "description": "Calculadora financiera para productores agrícolas mexicanos",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F8F3E8",
+  "theme_color": "#1B4332",
+  "orientation": "portrait-primary",
+  "lang": "es-MX",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

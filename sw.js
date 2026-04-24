@@ -1,4 +1,4 @@
-const CACHE = 'campoclaro-v2';
+const CACHE = 'campoclaro-v3';
 const ARCHIVOS = ['/', '/index.html'];
 
 self.addEventListener('install', e => {
@@ -17,8 +17,8 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   e.respondWith(
-    caches.match(e.request).then(r => r || fetch(e.request).catch(() =>
-      caches.match('/index.html')
-    ))
+    fetch(e.request).catch(() =>
+      caches.match(e.request).then(r => r || caches.match('/index.html'))
+    )
   );
 });

@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#1B4332">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="CampoClaro">
 <link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
 <meta name="description" content="Calculadora financiera para productores agrícolas mexicanos">
 <title>CampoClaro — Calculadora Agrícola</title>
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231B4332' rx='20'/><text y='.85em' font-size='72' x='14'>🌾</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --g900:#1B4332;--g700:#2D6A4F;--g500:#40916C;--g300:#74C69D;--g100:#D8F3DC;
@@ -22,31 +23,22 @@
   --sh:0 2px 12px rgba(27,67,50,.10);--r:16px;--rs:10px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{height:100%}
 body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--tp);min-height:100vh;max-width:480px;margin:0 auto;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:'Bitter',serif}
-
-/* HEADER */
 .hdr{background:var(--g900);color:#fff;padding:18px 20px 14px;position:sticky;top:0;z-index:100}
 .hdr-top{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Bitter',serif;font-size:22px;font-weight:700;letter-spacing:-.5px;line-height:1}
+.logo{font-family:'Bitter',serif;font-size:22px;font-weight:700;letter-spacing:-.5px}
 .logo span{color:var(--a400)}
 .btn-back{background:rgba(255,255,255,.15);border:none;color:#fff;padding:9px 15px;border-radius:20px;font-family:'Nunito',sans-serif;font-size:14px;cursor:pointer;display:none;align-items:center;gap:4px;touch-action:manipulation}
 .btn-back.vis{display:flex}
 .prog{height:3px;background:rgba(255,255,255,.2);border-radius:2px;margin-top:12px;display:none}
 .prog.vis{display:block}
 .prog-fill{height:100%;background:var(--a400);border-radius:2px;transition:width .4s ease}
-
-/* SCREENS */
-.scr{display:none;padding:20px 20px 110px;animation:fi .3s ease}
+.scr{display:none;padding:20px 20px 120px;animation:fi .3s ease}
 .scr.active{display:block}
 @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
-/* CARDS */
 .card{background:var(--white);border-radius:var(--r);padding:18px;box-shadow:var(--sh);margin-bottom:14px}
 .card-t{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--g700);margin-bottom:12px}
-
-/* HOME */
 .hero{text-align:center;padding:36px 0 24px}
 .hero-icon{font-size:60px;margin-bottom:14px;display:block}
 .hero-title{font-size:30px;font-weight:700;color:var(--g900);margin-bottom:6px;line-height:1.1}
@@ -56,33 +48,29 @@ h1,h2,h3{font-family:'Bitter',serif}
 .how-icon{font-size:20px;flex-shrink:0;margin-top:1px}
 .how-label{font-size:13px;font-weight:700;margin-bottom:2px}
 .how-desc{font-size:12px;color:var(--ts)}
-
-/* INSTALL BANNER */
 .install-banner{background:var(--g100);border:1.5px solid var(--g300);border-radius:var(--rs);padding:12px 14px;margin-bottom:14px;display:none;align-items:center;gap:10px}
 .install-banner.vis{display:flex}
 .install-text{flex:1;font-size:13px;color:var(--g900);line-height:1.4}
 .install-btn{background:var(--g900);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;touch-action:manipulation}
-
-/* BUTTONS */
-.btn-p,.btn-s,.btn-a{display:block;width:100%;border:none;border-radius:var(--rs);padding:15px 20px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;cursor:pointer;text-align:center;transition:all .15s;margin-bottom:10px;touch-action:manipulation;min-height:50px}
+.ios-hint{background:var(--a100);border:1.5px solid var(--a400);border-radius:var(--rs);padding:11px 14px;margin-bottom:14px;display:none;font-size:13px;color:var(--tp);line-height:1.5}
+.ios-hint.vis{display:block}
+.btn-p,.btn-s,.btn-a,.btn-h{display:block;width:100%;border:none;border-radius:var(--rs);padding:15px 20px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;cursor:pointer;text-align:center;transition:all .15s;margin-bottom:10px;touch-action:manipulation;min-height:50px}
 .btn-p{background:var(--g900);color:#fff}
 .btn-p:active{background:var(--g700)}
 .btn-s{background:transparent;color:var(--g900);border:2px solid var(--g900)}
 .btn-s:active{background:var(--g100)}
 .btn-a{background:var(--a600);color:#fff}
 .btn-a:active{background:#B8890F}
-
-/* CROP GRID */
+.btn-h{background:var(--creamD);color:var(--ts);border:1.5px solid var(--border)}
+.btn-h:active{background:var(--border)}
 .crop-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .crop-card{background:var(--white);border:2px solid var(--border);border-radius:var(--rs);padding:14px 10px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:var(--sh);touch-action:manipulation}
-.crop-card:active,.crop-card.sel{border-color:var(--g900);background:var(--g100)}
+.crop-card.sel{border-color:var(--g900);background:var(--g100)}
 .crop-em{font-size:34px;margin-bottom:7px;display:block}
 .crop-nm{font-size:13px;font-weight:700;color:var(--tp)}
-
-/* FORMS */
 .fg{margin-bottom:14px}
 .flbl{display:block;font-size:12px;font-weight:700;color:var(--ts);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
-.fi{width:100%;padding:13px 13px;border:1.5px solid var(--border);border-radius:var(--rs);font-family:'Nunito',sans-serif;font-size:16px;color:var(--tp);background:var(--cream);transition:border-color .2s;-webkit-appearance:none;appearance:none;min-height:48px}
+.fi{width:100%;padding:13px;border:1.5px solid var(--border);border-radius:var(--rs);font-family:'Nunito',sans-serif;font-size:16px;color:var(--tp);background:var(--cream);-webkit-appearance:none;appearance:none;min-height:48px}
 .fi:focus{outline:none;border-color:var(--g500);background:#fff}
 .fi::placeholder{color:var(--tm)}
 .fhint{font-size:11px;color:var(--tm);margin-top:4px}
@@ -90,31 +78,23 @@ h1,h2,h3{font-family:'Bitter',serif}
 .ig .fi{border-radius:var(--rs) 0 0 var(--rs)}
 .sfx{background:var(--creamD);border:1.5px solid var(--border);border-left:none;border-radius:0 var(--rs) var(--rs) 0;padding:13px 11px;font-size:13px;color:var(--ts);font-weight:600;white-space:nowrap;min-height:48px;display:flex;align-items:center}
 .pfx{background:var(--creamD);border:1.5px solid var(--border);border-right:none;border-radius:var(--rs) 0 0 var(--rs);padding:13px 11px;font-size:13px;color:var(--ts);font-weight:600;min-height:48px;display:flex;align-items:center}
-
-/* MODE TOGGLE */
 .mtog{display:flex;background:var(--creamD);border-radius:var(--rs);padding:3px;margin-bottom:16px}
 .mbtn{flex:1;padding:10px 6px;border:none;border-radius:8px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:transparent;color:var(--ts);transition:all .2s;touch-action:manipulation;min-height:44px}
 .mbtn.active{background:var(--g900);color:#fff}
-
-/* COST ROWS */
 .crow{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .clbl{font-size:13px;font-weight:600;color:var(--tp);flex:1;min-width:0;line-height:1.3}
 .cwrap{display:flex;align-items:center;width:160px;flex-shrink:0}
 .cpfx{background:var(--creamD);border:1.5px solid var(--border);border-right:none;border-radius:var(--rs) 0 0 var(--rs);padding:10px 9px;font-size:13px;color:var(--ts);font-weight:600;min-height:44px;display:flex;align-items:center}
-.ci{width:100%;padding:10px 7px;border:1.5px solid var(--border);border-radius:0 var(--rs) var(--rs) 0;font-family:'Nunito',sans-serif;font-size:14px;color:var(--tp);background:var(--cream);text-align:right;-webkit-appearance:none;appearance:none;min-height:44px}
+.ci{width:100%;padding:10px 7px;border:1.5px solid var(--border);border-radius:0 var(--rs) var(--rs) 0;font-family:'Nunito',sans-serif;font-size:14px;color:var(--tp);background:var(--cream);text-align:right;-webkit-appearance:none;min-height:44px}
 .ci:focus{outline:none;border-color:var(--g500);background:#fff}
 .total-bar{background:var(--g100);border-radius:var(--rs);padding:13px 15px;display:flex;justify-content:space-between;align-items:center;margin-top:14px}
 .tb-lbl{font-size:13px;font-weight:700;color:var(--g900)}
 .tb-val{font-size:18px;font-weight:700;color:var(--g900);font-family:'Bitter',serif}
-
-/* SCENARIO CARDS */
 .sc-card{border:1.5px solid var(--border);border-radius:var(--rs);padding:15px;margin-bottom:12px;background:var(--white)}
 .sc-hdr{display:flex;align-items:center;gap:9px;margin-bottom:11px}
 .sc-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
 .sc-lbl{font-size:14px;font-weight:700;color:var(--tp)}
 .sc-opt{font-size:11px;color:var(--tm);margin-left:auto}
-
-/* RESULTS */
 .sem{text-align:center;padding:22px;border-radius:var(--r);margin-bottom:14px}
 .sem-icon{font-size:52px;margin-bottom:7px}
 .sem-status{font-family:'Bitter',serif;font-size:20px;font-weight:700;margin-bottom:5px}
@@ -140,8 +120,6 @@ h1,h2,h3{font-family:'Bitter',serif}
 .rec{background:var(--a100);border-left:4px solid var(--a600);border-radius:0 var(--rs) var(--rs) 0;padding:13px 15px;margin-bottom:14px}
 .rec-t{font-size:12px;font-weight:700;color:var(--a600);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
 .rec-b{font-size:13px;color:var(--tp);line-height:1.5}
-
-/* HISTORY */
 .h-item{background:var(--white);border-radius:var(--rs);padding:14px;margin-bottom:9px;display:flex;align-items:center;gap:11px;cursor:pointer;border:1.5px solid transparent;transition:border-color .2s;box-shadow:var(--sh);touch-action:manipulation}
 .h-item:active{border-color:var(--g300);background:var(--g100)}
 .h-icon{font-size:26px}
@@ -152,12 +130,8 @@ h1,h2,h3{font-family:'Bitter',serif}
 .empty{text-align:center;padding:56px 20px;color:var(--tm)}
 .empty-icon{font-size:44px;margin-bottom:11px}
 .empty-txt{font-size:14px;line-height:1.6}
-
-/* BOTTOM NAV */
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid var(--border);padding:10px 18px calc(10px + env(safe-area-inset-bottom));display:none;gap:9px;z-index:50}
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid var(--border);padding:10px 18px calc(10px + env(safe-area-inset-bottom));display:none;gap:9px;z-index:50;flex-wrap:wrap}
 .bnav.vis{display:flex}
-
-/* MISC */
 .sec-title{font-family:'Bitter',serif;font-size:22px;font-weight:700;color:var(--g900);margin-bottom:5px}
 .sec-sub{font-size:13px;color:var(--ts);margin-bottom:22px;line-height:1.5}
 .divider{height:1px;background:var(--border);margin:12px 0}
@@ -169,7 +143,6 @@ h1,h2,h3{font-family:'Bitter',serif}
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="hdr">
   <div class="hdr-top">
     <div class="logo">Campo<span>Claro</span></div>
@@ -185,27 +158,28 @@ h1,h2,h3{font-family:'Bitter',serif}
     <h1 class="hero-title">Campo<span>Claro</span></h1>
     <p class="hero-sub">Calcula tu rentabilidad, compara precios y guarda el historial de tus zafras.</p>
   </div>
-
   <div class="install-banner" id="installBanner">
-    <div class="install-text">📲 <strong>Instalar como app</strong> en tu celular para usar sin internet</div>
-    <button class="install-btn" id="installBtn" onclick="installApp()">Instalar</button>
+    <div class="install-text">📲 <strong>Instalar como app</strong> para usar sin internet</div>
+    <button class="install-btn" onclick="installApp()">Instalar</button>
   </div>
-
+  <div class="ios-hint" id="iosHint">
+    📲 Para instalar en iPhone: toca el botón <strong>Compartir ↑</strong> en Safari y selecciona <strong>"Agregar a pantalla de inicio"</strong>
+  </div>
   <button class="btn-p" onclick="startNew()">+ Nueva zafra / ciclo</button>
   <button class="btn-s" onclick="showHistory()">📋 Ver historial</button>
   <div class="card" style="margin-top:4px">
     <div class="card-t">¿Cómo funciona?</div>
     <div style="display:flex;flex-direction:column;gap:12px">
       <div class="how-row"><span class="how-icon">🌱</span><div><div class="how-label">Elige tu cultivo</div><div class="how-desc">Caña, maíz, limón, café, plátano y más.</div></div></div>
-      <div class="how-row"><span class="how-icon">💰</span><div><div class="how-label">Registra tus costos</div><div class="how-desc">Modo rápido (total) o desglosado por categoría.</div></div></div>
-      <div class="how-row"><span class="how-icon">📊</span><div><div class="how-label">Compara escenarios</div><div class="how-desc">Ingenio, coyote, otro comprador. Ve cuál conviene.</div></div></div>
+      <div class="how-row"><span class="how-icon">💰</span><div><div class="how-label">Registra tus costos</div><div class="how-desc">Modo rápido o desglosado por categoría.</div></div></div>
+      <div class="how-row"><span class="how-icon">📊</span><div><div class="how-label">Compara escenarios</div><div class="how-desc">Ingenio, coyote, otro. Ve cuál conviene más.</div></div></div>
       <div class="how-row"><span class="how-icon">📱</span><div><div class="how-label">Funciona sin internet</div><div class="how-desc">Tus datos se guardan en tu dispositivo.</div></div></div>
     </div>
   </div>
   <div style="text-align:center;font-size:11px;color:var(--tm);padding:4px 0 16px">Desarrollado por José Eduardo López Castelán · Agri-Fintech 2026</div>
 </div>
 
-<!-- STEP 1: CULTIVO -->
+<!-- STEP 1 -->
 <div class="scr" id="scr-step1">
   <h2 class="sec-title">¿Qué cultivo?</h2>
   <p class="sec-sub">Selecciona el cultivo de esta temporada.</p>
@@ -213,14 +187,14 @@ h1,h2,h3{font-family:'Bitter',serif}
   <div class="bnav vis"><button class="btn-p" onclick="goStep2()" style="margin:0;flex:1">Continuar →</button></div>
 </div>
 
-<!-- STEP 2: PARCELA -->
+<!-- STEP 2 -->
 <div class="scr" id="scr-step2">
   <h2 class="sec-title">Tu parcela</h2>
   <p class="sec-sub">Datos básicos de esta temporada.</p>
   <div class="card">
     <div class="fg">
       <label class="flbl">Nombre de la parcela</label>
-      <input class="fi" type="text" id="pNombre" placeholder="Ej. Rancho El Paraíso, Parcela Norte…" autocomplete="off">
+      <input class="fi" type="text" id="pNombre" placeholder="Ej. Rancho El Paraíso" autocomplete="off">
     </div>
     <div class="fg">
       <label class="flbl">Temporada / Zafra</label>
@@ -248,13 +222,13 @@ h1,h2,h3{font-family:'Bitter',serif}
         <input class="fi" type="text" inputmode="decimal" id="pRend" placeholder="0" autocomplete="off" oninput="fmtInput(this)">
         <div class="sfx" id="rendSfx">ton/ha</div>
       </div>
-      <div class="fhint" id="rendHint">Toneladas producidas por cada hectárea cosechada</div>
+      <div class="fhint" id="rendHint">Toneladas por hectárea cosechada</div>
     </div>
   </div>
   <div class="bnav vis"><button class="btn-p" onclick="goStep3()" style="margin:0;flex:1">Continuar →</button></div>
 </div>
 
-<!-- STEP 3: COSTOS -->
+<!-- STEP 3 -->
 <div class="scr" id="scr-step3">
   <h2 class="sec-title">Tus costos</h2>
   <p class="sec-sub">¿Cuánto gastaste esta temporada?</p>
@@ -272,7 +246,7 @@ h1,h2,h3{font-family:'Bitter',serif}
                oninput="fmtInput(this)">
         <div class="sfx">MXN</div>
       </div>
-      <div class="fhint" style="margin-top:8px">Incluye insumos, jornales, flete, riego y cualquier otro gasto.</div>
+      <div class="fhint" style="margin-top:8px">Insumos, jornales, flete, riego y cualquier otro gasto.</div>
     </div>
   </div>
   <div id="sDet" style="display:none">
@@ -288,7 +262,7 @@ h1,h2,h3{font-family:'Bitter',serif}
   <div class="bnav vis"><button class="btn-p" onclick="goStep4()" style="margin:0;flex:1">Continuar →</button></div>
 </div>
 
-<!-- STEP 4: PRECIOS -->
+<!-- STEP 4 -->
 <div class="scr" id="scr-step4">
   <h2 class="sec-title">Precios de venta</h2>
   <p class="sec-sub">Ingresa el precio de cada comprador. Solo el primero es obligatorio.</p>
@@ -300,7 +274,7 @@ h1,h2,h3{font-family:'Bitter',serif}
              style="border-radius:0;border-left:none" oninput="fmtInput(this)">
       <div class="sfx" id="prSfx1">/ ton</div>
     </div>
-    <div class="fhint" style="margin-top:8px">Precio que paga el ingenio o tu comprador habitual por unidad</div>
+    <div class="fhint" style="margin-top:8px">Precio por unidad de tu comprador habitual</div>
   </div>
   <div class="sc-card">
     <div class="sc-hdr"><div class="sc-dot" style="background:#D4A017"></div><div class="sc-lbl">Coyote / Comprador externo</div><span class="sc-opt">Opcional</span></div>
@@ -313,9 +287,7 @@ h1,h2,h3{font-family:'Bitter',serif}
   </div>
   <div class="sc-card">
     <div class="sc-hdr"><div class="sc-dot" style="background:#C62828"></div><div class="sc-lbl">Otro comprador</div><span class="sc-opt">Opcional</span></div>
-    <div class="fg">
-      <input class="fi" type="text" id="pr3nom" placeholder="Nombre del comprador" autocomplete="off">
-    </div>
+    <div class="fg"><input class="fi" type="text" id="pr3nom" placeholder="Nombre del comprador" autocomplete="off"></div>
     <div class="ig">
       <div class="pfx">$</div>
       <input class="fi" type="text" inputmode="decimal" id="pr3" placeholder="0" autocomplete="off"
@@ -330,8 +302,9 @@ h1,h2,h3{font-family:'Bitter',serif}
 <div class="scr" id="scr-step5">
   <div id="resContent"></div>
   <div class="bnav vis">
+    <button class="btn-h" onclick="goHome()" style="margin:0;flex:0 0 auto;padding:15px 18px">🏠 Inicio</button>
     <button class="btn-s" onclick="startNew()" style="margin:0;flex:1">+ Nueva zafra</button>
-    <button class="btn-p" onclick="showHistory()" style="margin:0;flex:1">Ver historial</button>
+    <button class="btn-p" onclick="showHistory()" style="margin:0;flex:1">📋 Historial</button>
   </div>
 </div>
 
@@ -340,20 +313,23 @@ h1,h2,h3{font-family:'Bitter',serif}
   <h2 class="sec-title">Historial</h2>
   <p class="sec-sub">Todas tus zafras y ciclos registrados.</p>
   <div id="histList"></div>
-  <div class="bnav vis"><button class="btn-p" onclick="startNew()" style="margin:0;flex:1">+ Nueva zafra</button></div>
+  <div class="bnav vis">
+    <button class="btn-h" onclick="goHome()" style="margin:0;flex:0 0 auto;padding:15px 18px">🏠 Inicio</button>
+    <button class="btn-p" onclick="startNew()" style="margin:0;flex:1">+ Nueva zafra</button>
+  </div>
 </div>
 
 <!-- HISTORY DETAIL -->
 <div class="scr" id="scr-histdet">
   <div id="histDetContent"></div>
   <div class="bnav vis">
+    <button class="btn-h" onclick="goHome()" style="margin:0;flex:0 0 auto;padding:15px 18px">🏠 Inicio</button>
     <button class="btn-s" onclick="showHistory()" style="margin:0;flex:1">← Historial</button>
-    <button class="btn-p" onclick="delRecord()" style="margin:0;flex:1;background:var(--red)">🗑 Eliminar</button>
+    <button class="btn-p" onclick="delRecord()" style="margin:0;flex:0 0 auto;padding:15px 14px;background:var(--red)">🗑</button>
   </div>
 </div>
 
 <script>
-// ── CROP DATA ─────────────────────────────────────────────────────────────────
 const CROPS={
   cana:   {name:'Caña de azúcar',em:'🌿',unit:'ton', hint:'Toneladas producidas por hectárea cosechada'},
   maiz:   {name:'Maíz',          em:'🌽',unit:'ton', hint:'Toneladas producidas por hectárea cosechada'},
@@ -366,69 +342,61 @@ const CROPS={
   naranja:{name:'Naranja',       em:'🍊',unit:'ton', hint:'Toneladas producidas por hectárea cosechada'},
   sorgo:  {name:'Sorgo',         em:'🌾',unit:'ton', hint:'Toneladas producidas por hectárea cosechada'},
 };
+const CATS=['Preparación de terreno','Semilla / plántula','Fertilizantes','Herbicida (maleza)',
+  'Pesticida (plagas)','Jornales de siembra','Jornales de cosecha','Flete / transporte','Riego','Otros gastos'];
 
-const CATS=[
-  'Preparación de terreno','Semilla / plántula','Fertilizantes',
-  'Herbicida (maleza)','Pesticida (plagas)','Jornales de siembra',
-  'Jornales de cosecha','Flete / transporte','Riego','Otros gastos',
-];
-
-// ── STATE ─────────────────────────────────────────────────────────────────────
 let selCrop=null, costMode='r', viewId=null;
 let hist=JSON.parse(localStorage.getItem('cc_hist')||'[]');
 const SCREENS=['home','step1','step2','step3','step4','step5','hist','histdet'];
 let stack=['home'];
 let deferredPrompt=null;
 
-// ── PWA INSTALL ───────────────────────────────────────────────────────────────
-window.addEventListener('beforeinstallprompt',e=>{
-  e.preventDefault(); deferredPrompt=e;
+// ── FIX: track current session to avoid duplicates ───────────────────────────
+let currentSessionId = null;  // ID de la sesión activa de cálculo
+
+// ── PWA ───────────────────────────────────────────────────────────────────────
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault(); deferredPrompt = e;
   document.getElementById('installBanner').classList.add('vis');
+});
+window.addEventListener('appinstalled', () => {
+  document.getElementById('installBanner').classList.remove('vis');
 });
 function installApp(){
   if(!deferredPrompt) return;
   deferredPrompt.prompt();
-  deferredPrompt.userChoice.then(()=>{
-    deferredPrompt=null;
-    document.getElementById('installBanner').classList.remove('vis');
-  });
-}
-window.addEventListener('appinstalled',()=>{
-  document.getElementById('installBanner').classList.remove('vis');
-});
-
-// Register service worker (works when hosted on HTTPS)
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').catch(() => {});
+  deferredPrompt.userChoice.then(()=>{ deferredPrompt=null; document.getElementById('installBanner').classList.remove('vis'); });
 }
 
-// ── NUMBER FORMATTING ─────────────────────────────────────────────────────────
+// Detectar iOS para mostrar instrucción manual
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+const isStandalone = window.navigator.standalone === true;
+if(isIOS && !isStandalone) document.getElementById('iosHint').classList.add('vis');
+
+// Service worker
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').catch(()=>{});
+}
+
+// ── NUMBER FORMAT ─────────────────────────────────────────────────────────────
 function fmtInput(el){
-  const pos=el.selectionStart;
-  const prev=el.value;
-  // Strip everything except digits and one decimal point
+  const pos=el.selectionStart, prev=el.value;
   let raw=prev.replace(/,/g,'').replace(/[^\d.]/g,'');
   const parts=raw.split('.');
   if(parts.length>2) raw=parts[0]+'.'+parts.slice(1).join('');
   if(raw===''||raw==='.'){el.value=raw;return;}
-  // Format integer part with commas
-  const intStr=parts[0]||'0';
-  const intFmt=parseInt(intStr,10).toLocaleString('es-MX');
-  const decPart=parts[1]!==undefined?'.'+parts[1]:'';
-  const newVal=intFmt+decPart;
-  el.value=newVal;
-  // Restore cursor
-  const diff=newVal.length-prev.length;
-  try{el.setSelectionRange(pos+diff,pos+diff);}catch(e){}
+  const intFmt=parseInt(parts[0]||'0',10).toLocaleString('es-MX');
+  const dec=parts[1]!==undefined?'.'+parts[1]:'';
+  const nv=intFmt+dec;
+  el.value=nv;
+  try{const d=nv.length-prev.length;el.setSelectionRange(pos+d,pos+d);}catch(e){}
 }
-
 function getVal(id){
-  const el=document.getElementById(id);
-  if(!el) return 0;
+  const el=document.getElementById(id); if(!el) return 0;
   return parseFloat(el.value.replace(/,/g,'')||'0')||0;
 }
 
-// ── NAVIGATION ────────────────────────────────────────────────────────────────
+// ── NAV ───────────────────────────────────────────────────────────────────────
 function show(name){
   SCREENS.forEach(s=>{const e=document.getElementById('scr-'+s);if(e)e.classList.remove('active');});
   const t=document.getElementById('scr-'+name);
@@ -439,19 +407,18 @@ function show(name){
 function updHdr(s){
   const steps=['step1','step2','step3','step4','step5'];
   const idx=steps.indexOf(s);
-  const back=document.getElementById('btnBack');
-  const prog=document.getElementById('prog');
-  const fill=document.getElementById('progFill');
-  back.classList.toggle('vis',s!=='home');
-  prog.classList.toggle('vis',idx>=0);
-  if(idx>=0) fill.style.width=((idx+1)/steps.length*100)+'%';
+  document.getElementById('btnBack').classList.toggle('vis', s!=='home');
+  document.getElementById('prog').classList.toggle('vis', idx>=0);
+  if(idx>=0) document.getElementById('progFill').style.width=((idx+1)/steps.length*100)+'%';
 }
 function goBack(){if(stack.length>1){stack.pop();show(stack[stack.length-1]);}}
 function nav(s){stack.push(s);show(s);}
+function goHome(){stack=['home'];show('home');}
 
 // ── HOME ─────────────────────────────────────────────────────────────────────
 function startNew(){
   selCrop=null; costMode='r';
+  currentSessionId=null;  // FIX: reset session on new zafra
   renderCropGrid();
   ['pNombre','pTemp','pSemb','pCos','pRend','cTotal','pr1','pr2','pr3','pr3nom'].forEach(id=>{
     const el=document.getElementById(id); if(el) el.value='';
@@ -482,9 +449,8 @@ function goStep2(){
 
 // ── STEP 2 ────────────────────────────────────────────────────────────────────
 function goStep3(){
-  const ha=getVal('pCos'), rend=getVal('pRend');
-  if(!ha||ha<=0){alert('Ingresa las hectáreas cosechadas.');return;}
-  if(!rend||rend<=0){alert('Ingresa el rendimiento por hectárea.');return;}
+  if(!getVal('pCos')){alert('Ingresa las hectáreas cosechadas.');return;}
+  if(!getVal('pRend')){alert('Ingresa el rendimiento por hectárea.');return;}
   renderCostRows(); setMode('r'); nav('step3');
 }
 
@@ -517,12 +483,12 @@ function getCostos(){
 function getDetCosts(){
   if(costMode!=='d') return null;
   const r={};
-  CATS.forEach((cat,i)=>{const v=getVal('ci'+i);if(v>0) r[cat]=v;});
+  CATS.forEach((cat,i)=>{const v=getVal('ci'+i);if(v>0)r[cat]=v;});
   return Object.keys(r).length?r:null;
 }
 function goStep4(){nav('step4');}
 
-// ── STEP 4 + CALC ─────────────────────────────────────────────────────────────
+// ── CALCULAR ─────────────────────────────────────────────────────────────────
 function calcular(){
   const crop=CROPS[selCrop];
   const ha=getVal('pCos'), haS=getVal('pSemb')||getVal('pCos');
@@ -530,10 +496,10 @@ function calcular(){
   const prod=ha*rend, costos=getCostos();
   const temp=document.getElementById('pTemp').value||'Zafra';
   const nombre=document.getElementById('pNombre').value||crop.name;
-  const p1=getVal('pr1'), p2=getVal('pr2'), p3=getVal('pr3');
+  const p1=getVal('pr1'),p2=getVal('pr2'),p3=getVal('pr3');
   const p3n=document.getElementById('pr3nom').value||'Otro comprador';
 
-  if(!p1){alert('Ingresa el precio del comprador principal para continuar.');return;}
+  if(!p1){alert('Ingresa el precio del comprador principal.');return;}
 
   const scens=[];
   if(p1) scens.push({name:'Ingenio / Principal',color:'#2D6A4F',precio:p1});
@@ -541,20 +507,18 @@ function calcular(){
   if(p3) scens.push({name:p3n,                  color:'#C62828',precio:p3});
 
   const sRes=scens.map(s=>{
-    const ib=prod*s.precio;
-    const inet=ib-costos;
+    const ib=prod*s.precio, inet=ib-costos;
     const mg=ib>0?inet/ib*100:(costos>0?-100:0);
     return{...s,ib,inet,mg,cred:Math.max(inet*0.40,0)};
   });
-
   const best=sRes.reduce((b,s)=>s.inet>b.inet?s:b,sRes[0]);
   const bMg=best.mg;
 
   let sem;
   if(bMg>=40)      sem={cl:'g',ic:'🟢',st:'Zafra excelente',    dc:'Tu rentabilidad es sólida. Buena gestión de costos y precio favorable.'};
-  else if(bMg>=15) sem={cl:'y',ic:'🟡',st:'Zafra rentable',     dc:'Hay utilidad. Revisa costos; pequeñas mejoras pueden elevar bastante tu margen.'};
+  else if(bMg>=15) sem={cl:'y',ic:'🟡',st:'Zafra rentable',     dc:'Hay utilidad. Pequeñas mejoras en costos o precio pueden elevar bastante el margen.'};
   else if(bMg>=0)  sem={cl:'o',ic:'🟠',st:'Rentabilidad mínima',dc:'Apenas cubre costos. Busca reducir gastos o mejorar el precio de venta.'};
-  else             sem={cl:'r',ic:'🔴',st:'Zafra en pérdida',   dc:'Los costos superan los ingresos en todos los escenarios. Requiere revisión urgente.'};
+  else             sem={cl:'r',ic:'🔴',st:'Zafra en pérdida',   dc:'Los costos superan los ingresos. Requiere revisión urgente de gastos y precios.'};
 
   let rec='';
   if(sRes.length>1){
@@ -563,17 +527,29 @@ function calcular(){
     const neg=sRes.filter(s=>s.inet<0);
     if(neg.length) rec+=`Vender a ${neg.map(s=>s.name).join(' o ')} genera pérdida neta con estos costos.`;
   }
-  if(!rec&&bMg<15) rec='Considera reducir insumos o mano de obra, o negociar mejor precio antes de entregar.';
-  if(!rec&&bMg>=40) rec='Excelente resultado. Guarda parte del ingreso neto como reserva para insumos de la próxima temporada.';
+  if(!rec&&bMg<15) rec='Considera reducir insumos o negociar mejor precio antes de entregar la cosecha.';
+  if(!rec&&bMg>=40) rec='Excelente resultado. Guarda parte del ingreso neto como reserva para la próxima temporada.';
   if(!rec) rec='Compara precios con otros compradores antes de entregar para maximizar tu ingreso.';
 
+  // FIX DUPLICADOS: si ya existe un registro de esta sesión, lo reemplazamos
   const rec_obj={
-    id:Date.now(),crop:selCrop,nombre,temp,haS,ha,rend,prod,costos,
+    id: currentSessionId || Date.now(),
+    crop:selCrop,nombre,temp,haS,ha,rend,prod,costos,
     detCosts:getDetCosts(),scens:sRes,best,sem,
     date:new Date().toLocaleDateString('es-MX',{day:'2-digit',month:'short',year:'numeric'}),rec,
   };
 
-  hist.unshift(rec_obj);
+  if(currentSessionId){
+    // Reemplazar el registro existente de esta sesión
+    const idx=hist.findIndex(x=>x.id===currentSessionId);
+    if(idx>=0) hist[idx]=rec_obj;
+    else hist.unshift(rec_obj);
+  } else {
+    // Primera vez: guardar y recordar el ID de sesión
+    currentSessionId=rec_obj.id;
+    hist.unshift(rec_obj);
+  }
+
   localStorage.setItem('cc_hist',JSON.stringify(hist));
   renderResults(rec_obj,'resContent');
   nav('step5');
@@ -581,7 +557,7 @@ function calcular(){
 
 // ── RENDER RESULTS ────────────────────────────────────────────────────────────
 function renderResults(r,targetId){
-  const crop=CROPS[r.crop], b=r.best;
+  const crop=CROPS[r.crop]||{em:'🌾',name:r.crop,unit:'ton'}, b=r.best;
   document.getElementById(targetId).innerHTML=`
     <div style="margin-bottom:14px">
       <div style="font-size:12px;color:var(--tm);margin-bottom:3px">${crop.em} ${crop.name} · ${r.temp}</div>
@@ -638,9 +614,7 @@ function renderResults(r,targetId){
         </div>`).join('')}
     </div>`:''}
     <div class="rec"><div class="rec-t">💡 Recomendación</div><div class="rec-b">${r.rec}</div></div>
-    <div style="text-align:center;font-size:11px;color:var(--tm);padding:4px 0 16px">
-      Registrado el ${r.date} · Guardado en tu dispositivo
-    </div>`;
+    <div style="text-align:center;font-size:11px;color:var(--tm);padding:4px 0 16px">Registrado el ${r.date} · Guardado en tu dispositivo</div>`;
 }
 function dRow(l,v,neg){
   return `<div class="det-row"><span class="det-lbl">${l}</span><span class="det-val" style="color:${neg?'var(--red)':'var(--g900)'}">${v}</span></div>`;
@@ -687,7 +661,6 @@ function fmt(n){
 }
 function fmtN(n){return isNaN(n)?'0':parseFloat(n.toFixed(1)).toLocaleString('es-MX');}
 
-// ── INIT ─────────────────────────────────────────────────────────────────────
 renderCropGrid();
 </script>
 </body>

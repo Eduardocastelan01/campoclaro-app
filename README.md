@@ -3,7 +3,7 @@ Calculadora financiera agrícola para productores mexicanos — PWA offline
 
 # CampoClaro — Calculadora Financiera Agrícola
 
-**Demo en vivo:** [campoclaro-mx.netlify.app](https://campoclaro-mx.netlify.app)
+**Demo en vivo:** [eduardocastelan01.github.io/campoclaro-app](eduardocastelan01.github.io/campoclaro-app)
 **Autor:** José Eduardo López Castelán
 
 Aplicación web progresiva (PWA) para productores agrícolas mexicanos.
